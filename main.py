@@ -140,11 +140,11 @@ class ScanPage(webapp2.RequestHandler):
 		self.response.write("> Done looping through submissions")
 
 	def get_entity(self):
-		entries = db.GqlQuery("SELECT * FROM LookEntry WHERE ANCESTOR IS :1 ORDER BY date DESC LIMIT 10", lookdb_key())
+		self.entries = db.GqlQuery("SELECT * FROM LookEntry WHERE ANCESTOR IS :1 ORDER BY date DESC", lookdb_key())
 		d = str(datetime.now().date())
 		found = False
 
-		for entr in entries:
+		for entr in self.entries:
 			dn = str(entr.date.date())
 			if(dn == d):
 				found = True
@@ -159,9 +159,7 @@ class ScanPage(webapp2.RequestHandler):
 
 	# Returns True if there's no match, False if the ID is found is any of the ListProperty elements of the entities
 	def check_id(self, subid):
-		entries = db.GqlQuery("SELECT * FROM LookEntry WHERE ANCESTOR IS :1 ORDER BY date DESC", lookdb_key())
-
-		for entr in entries:
+		for entr in self.entries:
 			if subid in entr.content:
 				return False
 

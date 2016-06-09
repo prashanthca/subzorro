@@ -11,4 +11,6 @@ SubZorro is powered by python and it uses [PTN](https://github.com/divijbindlish
 ## Python Modules used
 
 - [PTN (parse-torrent-name)](https://github.com/divijbindlish/parse-torrent-name) - to parse the movie/tv titles
-- [PRAW](https://praw.readthedocs.io/) - to interact with reddit's API 
+- [PRAW](https://praw.readthedocs.io/) - to interact with reddit's API
+
+ 
